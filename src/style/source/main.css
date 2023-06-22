@@ -1,32 +1,41 @@
 :root {
-  /* Color styles */
-  --black: #0b2447;
-  --grey: #19376d;
-  --grey-light: #576cbc;
-  --light: #a5d7e8;
-  --white: #d3e2e7;
-  --white-50: #d3e2e780;
-  --blue: #0a6ebd;
-  --red: #a52323;
+    /* Color styles */
+    --black: #0b2447;
+    --grey: #19376d;
+    --grey-light: #576cbc;
+    --light: #a5d7e8;
+    --white: #d3e2e7;
+    --white-50: #d3e2e780;
+    --blue: #0a6ebd;
+    --red: #a52323;
 
-  --gap-s: 1rem;
-  --gap-l: 2rem;
+    --gap-xs: 0.5rem;
+    --gap-s: 1rem;
+    --gap-l: 2rem;
+
+    --border-radius: 4px;
 }
 
 *,
 *::after,
 *::before {
-  box-sizing: border-box;
-  font-family: inherit;
-  font-weight: inherit;
-  font-size: inherit;
+    box-sizing: border-box;
+    font-weight: inherit;
+    font-size: inherit;
+    font-family: inherit;
 }
 
 body {
-  background: var(--black);
-  margin: 0;
-  font-family: Inter;
-  font-weight: 400;
+    margin: 0;
+    background: var(--black);
+    font-weight: 400;
+    font-family: Inter;
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-l);
+    align-items: center;
+    margin-top: var(--gap-l);
+    padding-inline: var(--gap-s);
 }
 
 .text-medium {

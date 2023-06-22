@@ -1,6 +1,6 @@
 <div>
   <span class="text-normal">© By Hugo Fouché</span>
-  <a href="lll">
+  <a href="https://github.com/Fouche-Hugo/draft-lol" target="_blank">
     <svg
       width="34"
       height="32"
