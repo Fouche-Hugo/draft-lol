@@ -78,7 +78,7 @@
                 </g>
             </g>
         </svg>
-        <span class="text-normal">Copy the draft as img</span>
+        <span class="text-normal">Copy the draft as image</span>
     </button>
 
     <button on:click={link}>

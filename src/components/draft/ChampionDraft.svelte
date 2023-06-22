@@ -29,6 +29,7 @@
             Operations: 'copy',
         }}
         on:click={updateSelectedChampion}
+        class:selected={championName === $selectedChampion}
     >
         {#if championName === ''}
             <div />
@@ -80,6 +81,10 @@
         img {
             aspect-ratio: 1;
             width: 100%;
+        }
+
+        &.selected {
+            border: 2px solid var(--blue);
         }
 
         &[disabled] {
