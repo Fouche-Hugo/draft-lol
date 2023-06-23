@@ -1,6 +1,6 @@
 <script lang="ts">
     import html2canvas from 'html2canvas'
-    import { draft } from '../../ts/stores'
+    import { draft, draftInfo } from '../../ts/stores'
 
     let champions
     draft.subscribe((value) => {
@@ -37,6 +37,8 @@
                 url.searchParams.delete(param.key)
             }
         })
+
+        url.searchParams.set('infos', $draftInfo.blue + "," + $draftInfo.red)
 
         navigator.clipboard.writeText(url.toString())
     }
@@ -124,6 +126,7 @@
         border: none;
         background: transparent;
         padding: 0;
+        width: fit-content;
 
         & span {
             color: var(--white);

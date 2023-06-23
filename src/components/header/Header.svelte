@@ -1,6 +1,6 @@
 <script>
     import ChampionBanned from './ChampionBanned.svelte'
-    import { draft } from '../../ts/stores'
+    import { draft, draftInfo } from '../../ts/stores'
     
     let champions
     draft.subscribe((value) => {
@@ -10,7 +10,9 @@
 
 <header>
     <section class="container-team">
-        <div class="team-color blue" />
+        <div class="team-color blue">
+            <input class="text-medium" type="text" bind:value={$draftInfo.blue} />
+        </div>
         <div class="container-champions blue">
             <div class="container-trio-champions">
                 <ChampionBanned championName={champions.ban0} banId={0} />
@@ -25,7 +27,9 @@
     </section>
 
     <section class="container-team red">
-        <div class="team-color red" />
+        <div class="team-color red">
+            <input class="text-medium" type="text" bind:value={$draftInfo.red} />
+        </div>
         <div class="container-champions red">
             <div class="container-duo-champions">
                 <ChampionBanned championName={champions.ban5} banId={5} />
@@ -56,7 +60,6 @@
         & .team-color {
             border-radius: var(--border-radius);
             width: 100%;
-            height: 30px;
 
             &.blue {
                 background: var(--blue);
@@ -64,6 +67,19 @@
 
             &.red {
                 background: var(--red);
+            }
+
+            & input {
+                width: 100%;
+                border: none;
+                border-radius: var(--border-radius);
+                background: transparent;
+                text-align: center;
+                color: var(--white);
+
+                &:focus {
+                    outline: none;
+                }
             }
         }
     }
