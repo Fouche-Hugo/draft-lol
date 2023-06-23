@@ -48,6 +48,7 @@
     function onDropped() {
         if (championName === '' || championName === undefined || championName === null) {
             championName = selectedChampionName
+            selectedChampion.set('')
         } else {
             championName = ''
         }
