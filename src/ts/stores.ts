@@ -20,3 +20,5 @@ if (searchParams.has("infos")) {
 }
 
 export const draftInfo = writable(infos)
+
+export const editingMode = writable(false)

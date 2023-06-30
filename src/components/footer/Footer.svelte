@@ -1,6 +1,7 @@
 <script lang="ts">
     import html2canvas from 'html2canvas'
-    import { draft, draftInfo } from '../../ts/stores'
+    import { draft, draftInfo, editingMode } from '../../ts/stores'
+    import { tick } from 'svelte'
 
     let champions
     draft.subscribe((value) => {
@@ -43,7 +44,9 @@
         navigator.clipboard.writeText(url.toString())
     }
 
-    function screenshot() {
+    async function screenshot() {
+        editingMode.set(false)
+        await tick()
         const screenshotTarget = document.querySelector('#draft') as HTMLElement
 
         if (!screenshotTarget) {
@@ -56,6 +59,10 @@
                 navigator.clipboard.write([item])
             })
         })
+    }
+
+    function updateEditingMode() {
+        editingMode.update((value) => !value)
     }
 </script>
 
@@ -102,7 +109,7 @@
             </button>
         </div>
         <div class="buttons-container">
-            <button>
+            <button on:click={updateEditingMode}>
                 <svg
                     width="32"
                     height="32"
@@ -140,12 +147,16 @@
         padding: var(--gap-s);
         width: min(100%, 1000px);
         color: var(--white);
+
+        @media screen and (max-width: 1300px) {
+            width: 100%;
+        }
     }
 
     .options-container {
         display: flex;
-        gap: var(--gap-l);
         justify-content: space-between;
+        gap: var(--gap-l);
 
         @media screen and (max-width: 600px) {
             flex-direction: column;
