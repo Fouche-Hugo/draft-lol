@@ -34,7 +34,7 @@ body {
     flex-direction: column;
     gap: var(--gap-l);
     align-items: center;
-    margin-block: var(--gap-l);
+    padding-block: var(--gap-l);
     padding-inline: var(--gap-s);
 }
 
