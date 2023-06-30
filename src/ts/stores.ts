@@ -1,24 +1,31 @@
 import { writable } from 'svelte/store';
+import {encode, decode } from 'base2048';
+import Msgpack from 'msgpack-lite';
 
 const searchParams = new URLSearchParams(window.location.search)
-const champions = {}
+let draftInfos = {}
 
-searchParams.forEach((value, key) => {
-    if (key === "infos") return
-    champions[key] = value
-})
-
-export const draft = writable(champions)
-
-export const selectedChampion = writable(null)
-
-const infos = {"blue": "blue", "red": "red"}
-if (searchParams.has("infos")) {
-    const infosURL = searchParams.get("infos").split(",")
-    infos.blue = infosURL[0]
-    infos.red = infosURL[1]
+if (searchParams.has("draft")) {
+    draftInfos = Msgpack.decode(decode(searchParams.get("draft")))
+} else {
+    draftInfos['red'] = 'red'
+    draftInfos['blue'] = 'blue'
+    draftInfos['Bans blue'] = ''
+    draftInfos['Blue 1'] = ''
+    draftInfos['Blue 2'] = ''
+    draftInfos['Blue 3'] = ''
+    draftInfos['Blue 4'] = ''
+    draftInfos['Blue 5'] = ''
+    draftInfos['Bans red'] = ''
+    draftInfos['Red 1'] = ''
+    draftInfos['Red 2'] = ''
+    draftInfos['Red 3'] = ''
+    draftInfos['Red 4'] = ''
+    draftInfos['Red 5'] = ''
 }
 
-export const draftInfo = writable(infos)
+export const draft = writable(draftInfos)
+
+export const selectedChampion = writable(null)
 
 export const editingMode = writable(false)

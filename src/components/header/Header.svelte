@@ -1,6 +1,6 @@
 <script>
     import ChampionBanned from './ChampionBanned.svelte'
-    import { draft, draftInfo } from '../../ts/stores'
+    import { draft } from '../../ts/stores'
     
     let champions
     draft.subscribe((value) => {
@@ -11,7 +11,7 @@
 <header>
     <section class="container-team">
         <div class="team-color blue">
-            <input class="text-medium" type="text" bind:value={$draftInfo.blue} />
+            <input class="text-medium" type="text" bind:value={$draft['blue']} />
         </div>
         <div class="container-champions blue">
             <div class="container-trio-champions">
@@ -28,7 +28,7 @@
 
     <section class="container-team red">
         <div class="team-color red">
-            <input class="text-medium" type="text" bind:value={$draftInfo.red} />
+            <input class="text-medium" type="text" bind:value={$draft['red']} />
         </div>
         <div class="container-champions red">
             <div class="container-duo-champions">

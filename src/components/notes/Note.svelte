@@ -1,17 +1,18 @@
 <script>
-    export let commentary = ''
+    import { draft } from '../../ts/stores'
+
     export let name = 'note'
     export let editing = false
 </script>
 
 {#if !editing}
     <p class="text-normal" style:--name={"'" + name + "'"}>
-        {commentary}
+        {$draft[name]}
     </p>
 {:else}
     <div>
         <p class="text-normal textarea-title">{name}</p>
-        <textarea {name} bind:value={commentary} />
+        <textarea class="text-normal" {name} bind:value={$draft[name]} />
     </div>
 {/if}
 
@@ -30,14 +31,15 @@
     }
 
     textarea {
+        padding: 0;
         border: none;
         border-radius: var(--border-radius);
         background: var(--grey);
+        width: 100%;
+        height: 100%;
         resize: none;
         color: var(--white);
         caret-color: var(--white);
-        height: 100%;
-        width: 100%;
 
         &:focus {
             outline: none;
