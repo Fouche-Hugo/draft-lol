@@ -49,6 +49,11 @@
             &:focus {
                 outline: none;
             }
+
+            &::placeholder {
+                color: var(--white);
+                opacity: 0.5;
+            }
         }
     }
 
