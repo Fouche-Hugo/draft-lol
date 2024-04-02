@@ -9,12 +9,11 @@ Take screenshots of your drafts to share on social media or save for later as li
 
 ### Technologies Used
 - JavaScript
-- TypeScript
 - npm
 - Svelte
 
 ### Demo
-You can access a demo of the application by following this link: [https://draft-lol.fouche-hugo.fr]
+You can access a demo of the application by following this link: [https://draft-lol.fouche-hugo.fr](https://draft-lol.fouche-hugo.fr)
 
 ## French
 Cette application web vous permet de créer des drafts de League of Legends et de les partager facilement avec des liens et des captures d'écran.
@@ -26,10 +25,9 @@ Prenez des captures d'écran de vos drafts pour les partager sur les réseaux so
 
 ### Technologies utilisées
 - JavaScript
-- TypeScript
 - npm
 - Svelte
 
 ### Démo
-Vous pouvez accéder à une démonstration de l'application en suivant ce lien : [https://draft-lol.fouche-hugo.fr]
+Vous pouvez accéder à une démonstration de l'application en suivant ce lien : [https://draft-lol.fouche-hugo.fr](https://draft-lol.fouche-hugo.fr)
 
