@@ -1,17 +1,21 @@
 <script>
     import ChampionBanned from './ChampionBanned.svelte'
     import { draft } from '../../ts/stores'
-    
+
     let champions
     draft.subscribe((value) => {
-		champions = value;
-	});
+        champions = value
+    })
 </script>
 
 <header>
     <section class="container-team">
         <div class="team-color blue">
-            <input class="text-medium" type="text" bind:value={$draft['blue']} />
+            <input
+                class="text-medium"
+                type="text"
+                bind:value={$draft['blue']}
+            />
         </div>
         <div class="container-champions blue">
             <div class="container-trio-champions">
@@ -70,12 +74,12 @@
             }
 
             & input {
-                width: 100%;
                 border: none;
                 border-radius: var(--border-radius);
                 background: transparent;
-                text-align: center;
+                width: 100%;
                 color: var(--white);
+                text-align: center;
 
                 &:focus {
                     outline: none;
@@ -98,7 +102,7 @@
             &.blue {
                 flex-direction: column;
             }
-            
+
             &.red {
                 flex-direction: column-reverse;
                 align-items: flex-end;

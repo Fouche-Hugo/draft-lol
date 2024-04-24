@@ -31,10 +31,10 @@
     }
 
     textarea {
-        padding: 0;
         border: none;
         border-radius: var(--border-radius);
         background: var(--grey);
+        padding: 0;
         width: 100%;
         height: 100%;
         resize: none;

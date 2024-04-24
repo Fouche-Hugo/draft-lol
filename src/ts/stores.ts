@@ -1,13 +1,25 @@
-import { writable } from 'svelte/store';
-import {encode, decode } from 'base2048';
-import Msgpack from 'msgpack-lite';
+import { writable } from 'svelte/store'
+import { encode, decode } from 'base2048'
+import Msgpack from 'msgpack-lite'
 
 const searchParams = new URLSearchParams(window.location.search)
 let draftInfos = {}
 
-if (searchParams.has("draft")) {
-    draftInfos = Msgpack.decode(decode(searchParams.get("draft")))
+if (searchParams.has('draft')) {
+    draftInfos = Msgpack.decode(decode(searchParams.get('draft')))
 } else {
+    draftInfos = initDraft()
+}
+
+export const draft = writable(draftInfos)
+
+export const selectedChampion = writable(null)
+
+export const editingMode = writable(false)
+
+function initDraft() {
+    let draftInfos = {}
+
     draftInfos['red'] = 'red'
     draftInfos['blue'] = 'blue'
     draftInfos['Bans blue'] = ''
@@ -22,10 +34,10 @@ if (searchParams.has("draft")) {
     draftInfos['Red 3'] = ''
     draftInfos['Red 4'] = ''
     draftInfos['Red 5'] = ''
+
+    return draftInfos
 }
 
-export const draft = writable(draftInfos)
-
-export const selectedChampion = writable(null)
-
-export const editingMode = writable(false)
+export function clearDraft() {
+    draft.set(initDraft())
+}

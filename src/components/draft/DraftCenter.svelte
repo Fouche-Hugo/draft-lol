@@ -51,8 +51,8 @@
             }
 
             &::placeholder {
-                color: var(--white);
                 opacity: 0.5;
+                color: var(--white);
             }
         }
     }
@@ -70,7 +70,7 @@
             grid-template-rows: repeat(auto-fill, 60px);
             grid-template-columns: repeat(auto-fill, 60px);
         }
-        
+
         @media screen and (max-width: 500px) {
             grid-template-rows: repeat(auto-fill, 40px);
             grid-template-columns: repeat(auto-fill, 40px);

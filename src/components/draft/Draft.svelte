@@ -16,11 +16,11 @@
         <Note editing={$editingMode} name="Bans blue" />
         <Note editing={$editingMode} name="Blue 1" />
         <div class="notes-duo-container">
-            <Note editing={$editingMode} name="Blue 2"  />
+            <Note editing={$editingMode} name="Blue 2" />
             <Note editing={$editingMode} name="Blue 3" />
         </div>
         <div class="notes-duo-container">
-            <Note editing={$editingMode} name="Blue 4"  />
+            <Note editing={$editingMode} name="Blue 4" />
             <Note editing={$editingMode} name="Blue 5" />
         </div>
     </div>
@@ -166,7 +166,9 @@
 
         &.right {
             grid-template-rows:
-                60px calc(100px * 2 + var(--gap-s)) calc(100px * 2 + var(--gap-s))
+                60px calc(100px * 2 + var(--gap-s)) calc(
+                    100px * 2 + var(--gap-s)
+                )
                 100px;
         }
 

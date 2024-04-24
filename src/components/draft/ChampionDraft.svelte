@@ -41,10 +41,7 @@
         {/if}
     </button>
 {:else}
-    <button
-        {disabled}
-        on:click={updateSelectedChampion}
-    >
+    <button {disabled} on:click={updateSelectedChampion}>
         {#if championName === ''}
             <div />
         {:else}

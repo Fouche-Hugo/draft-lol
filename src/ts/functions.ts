@@ -2,7 +2,7 @@ import { draft } from './stores'
 import championsNames from '../data/champions.json'
 
 let champions
-draft.subscribe(value => champions = value)
+draft.subscribe((value) => (champions = value))
 
 export function isChampionInDraft(championName: string): boolean {
     for (const champion in champions) {
