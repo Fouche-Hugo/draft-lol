@@ -1,41 +1,41 @@
 {
-  "name": "draft-lol",
-  "private": true,
-  "version": "1.2.0",
-  "type": "module",
-  "scripts": {
-    "dev": "npm-run-all -p postcss:watch vite:dev",
-    "build": "npm-run-all postcss:build vite:build",
-    "vite:dev": "vite",
-    "vite:build": "vite build",
-    "postcss:build": "postcss src/style/source --dir src/style/output",
-    "postcss:watch": "postcss src/style/source --dir src/style/output --watch",
-    "preview": "vite preview",
-    "check": "svelte-check --tsconfig ./tsconfig.json"
-  },
-  "devDependencies": {
-    "@sveltejs/vite-plugin-svelte": "^2.0.4",
-    "@tsconfig/svelte": "^4.0.1",
-    "base2048": "^2.0.2",
-    "html2canvas": "^1.4.1",
-    "msgpack-lite": "^0.1.26",
-    "svelte": "^3.58.0",
-    "svelte-check": "^3.3.1",
-    "svelte-drag-and-drop-actions": "^1.0.0",
-    "svelte-drag-drop-touch": "^0.1.9",
-    "tslib": "^2.5.0",
-    "typescript": "^5.0.2",
-    "vite": "^4.3.9"
-  },
-  "dependencies": {
-    "cssnano": "^6.0.1",
-    "npm-run-all": "^4.1.5",
-    "postcss": "^8.4.24",
-    "postcss-cli": "^10.1.0",
-    "postcss-import": "^15.1.0",
-    "postcss-preset-env": "^8.5.0",
-    "prettier": "^2.8.8",
-    "prettier-plugin-css-order": "^1.3.1",
-    "prettier-plugin-svelte": "^2.10.1"
-  }
+    "name": "draft-lol",
+    "private": true,
+    "version": "1.2.0",
+    "type": "module",
+    "scripts": {
+        "dev": "npm-run-all -p postcss:watch vite:dev",
+        "build": "npm-run-all postcss:build vite:build",
+        "vite:dev": "vite",
+        "vite:build": "vite build",
+        "postcss:build": "postcss src/style/source --dir src/style/output",
+        "postcss:watch": "postcss src/style/source --dir src/style/output --watch",
+        "preview": "vite preview",
+        "check": "svelte-check --tsconfig ./tsconfig.json"
+    },
+    "devDependencies": {
+        "@sveltejs/vite-plugin-svelte": "^2.0.4",
+        "@tsconfig/svelte": "^4.0.1",
+        "base2048": "^2.0.2",
+        "html2canvas": "^1.4.1",
+        "msgpack-lite": "^0.1.26",
+        "svelte": "^3.58.0",
+        "svelte-check": "^3.3.1",
+        "svelte-drag-and-drop-actions": "^1.0.0",
+        "svelte-drag-drop-touch": "^0.1.9",
+        "tslib": "^2.5.0",
+        "typescript": "^5.0.2",
+        "vite": "^4.3.9"
+    },
+    "dependencies": {
+        "cssnano": "^6.0.1",
+        "npm-run-all": "^4.1.5",
+        "postcss": "^8.4.24",
+        "postcss-cli": "^10.1.0",
+        "postcss-import": "^15.1.0",
+        "postcss-preset-env": "^8.5.0",
+        "prettier": "^2.8.8",
+        "prettier-plugin-css-order": "^1.3.1",
+        "prettier-plugin-svelte": "^2.10.1"
+    }
 }

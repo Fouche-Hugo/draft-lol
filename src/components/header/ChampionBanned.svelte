@@ -17,7 +17,7 @@
         selectedChampionName = value
     })
 
-    export let championName: string = ""
+    export let championName: string = ''
     export let banId: number
 
     function onDrop(
@@ -45,7 +45,11 @@
     }
 
     function onDropped() {
-        if (championName === '' || championName === undefined || championName === null) {
+        if (
+            championName === '' ||
+            championName === undefined ||
+            championName === null
+        ) {
             championName = selectedChampionName
             selectedChampion.set('')
         } else {
@@ -76,13 +80,13 @@
 
 <style lang="postcss">
     button {
+        border: none;
+        border-radius: var(--border-radius);
         background: var(--grey);
+        padding: 0;
         width: 60px;
         height: 60px;
-        border-radius: var(--border-radius);
         overflow: hidden;
-        border: none;
-        padding: 0;
 
         @media screen and (max-width: 830px) {
             width: 40px;
@@ -96,8 +100,8 @@
     }
 
     img {
+        cursor: pointer;
         aspect-ratio: 1;
         width: 100%;
-        cursor: pointer;
     }
 </style>

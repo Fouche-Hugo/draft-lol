@@ -17,7 +17,7 @@
         selectedChampionName = value
     })
 
-    export let championName: string = ""
+    export let championName: string = ''
     export let pickId: number
     export let team: string
 
@@ -46,7 +46,11 @@
     }
 
     function onDropped() {
-        if (championName === '' || championName === undefined || championName === null) {
+        if (
+            championName === '' ||
+            championName === undefined ||
+            championName === null
+        ) {
             championName = selectedChampionName
             selectedChampion.set('')
         } else {
@@ -77,13 +81,13 @@
 
 <style lang="postcss">
     button {
+        border: none;
         border-radius: var(--border-radius);
         background: var(--grey);
+        padding: 0;
         width: 100px;
         height: 100px;
         overflow: hidden;
-        border: none;
-        padding: 0;
 
         @media screen and (max-width: 830px) {
             width: 80px;
