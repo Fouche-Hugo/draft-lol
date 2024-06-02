@@ -31,8 +31,6 @@ export function decodeDraftLink(searchParams: URLSearchParams): {[key: string]: 
     let draftInfos = Msgpack.decode(decode(searchParams.get('draft')))
     let draft = {}
 
-    console.log(draftInfos)
-
     for(let i = 0; i < 5; i++) {
         let index = draftInfos[i]
         if (index >= 0) {
