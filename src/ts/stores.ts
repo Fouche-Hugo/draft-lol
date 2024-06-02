@@ -1,12 +1,12 @@
 import { writable } from 'svelte/store'
-import { encode, decode } from 'base2048'
-import Msgpack from 'msgpack-lite'
+import { decodeDraftLink } from './functions'
 
 const searchParams = new URLSearchParams(window.location.search)
 let draftInfos = {}
 
 if (searchParams.has('draft')) {
-    draftInfos = Msgpack.decode(decode(searchParams.get('draft')))
+    // draftInfos = Msgpack.decode(decode(searchParams.get('draft')))
+    draftInfos = decodeDraftLink(searchParams)
 } else {
     draftInfos = initDraft()
 }

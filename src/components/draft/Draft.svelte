@@ -30,30 +30,30 @@
         <div class="draft-center">
             <div class="champions-picked">
                 <ChampionPicked
-                    championName={champions.b1}
+                    championImage={champions.b1}
                     team="b"
                     pickId={1}
                 />
                 <div class="container-duo-champions">
                     <ChampionPicked
-                        championName={champions.b2}
+                        championImage={champions.b2}
                         team="b"
                         pickId={2}
                     />
                     <ChampionPicked
-                        championName={champions.b3}
+                        championImage={champions.b3}
                         team="b"
                         pickId={3}
                     />
                 </div>
                 <div class="container-duo-champions">
                     <ChampionPicked
-                        championName={champions.b4}
+                        championImage={champions.b4}
                         team="b"
                         pickId={4}
                     />
                     <ChampionPicked
-                        championName={champions.b5}
+                        championImage={champions.b5}
                         team="b"
                         pickId={5}
                     />
@@ -65,30 +65,30 @@
             <div class="champions-picked">
                 <div class="container-duo-champions">
                     <ChampionPicked
-                        championName={champions.r1}
+                        championImage={champions.r1}
                         team="r"
                         pickId={1}
                     />
                     <ChampionPicked
-                        championName={champions.r2}
+                        championImage={champions.r2}
                         team="r"
                         pickId={2}
                     />
                 </div>
                 <div class="container-duo-champions">
                     <ChampionPicked
-                        championName={champions.r3}
+                        championImage={champions.r3}
                         team="r"
                         pickId={3}
                     />
                     <ChampionPicked
-                        championName={champions.r4}
+                        championImage={champions.r4}
                         team="r"
                         pickId={4}
                     />
                 </div>
                 <ChampionPicked
-                    championName={champions.r5}
+                    championImage={champions.r5}
                     team="r"
                     pickId={5}
                 />

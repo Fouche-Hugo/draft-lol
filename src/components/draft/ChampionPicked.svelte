@@ -5,19 +5,19 @@
         type DropOperation,
     } from 'svelte-drag-and-drop-actions'
     import { draft, selectedChampion } from '../../ts/stores'
-    import { isStringAChampion } from '../../ts/functions'
+    import { isStringAChampionImage } from '../../ts/functions'
 
     let champions
     draft.subscribe((value) => {
         champions = value
     })
 
-    let selectedChampionName
+    let selectedchampionImage
     selectedChampion.subscribe((value) => {
-        selectedChampionName = value
+        selectedchampionImage = value
     })
 
-    export let championName: string = ''
+    export let championImage: string = ''
     export let pickId: number
     export let team: string
 
@@ -29,34 +29,34 @@
         DroppableExtras: any,
         DropZoneExtras: any
     ): string {
-        let newChampionName = DataOffered['text/plain']
+        let newchampionImage = DataOffered['text/plain']
 
-        if (newChampionName === championName) {
+        if (newchampionImage === championImage) {
             return 'false'
         }
 
-        if (!isStringAChampion(newChampionName)) {
+        if (!isStringAChampionImage(newchampionImage)) {
             return 'false'
         }
 
-        championName = newChampionName
-        draft.set({ ...champions, [team + pickId]: championName })
+        championImage = newchampionImage
+        draft.set({ ...champions, [team + pickId]: championImage })
 
         return undefined
     }
 
     function onDropped() {
         if (
-            championName === '' ||
-            championName === undefined ||
-            championName === null
+            championImage === '' ||
+            championImage === undefined ||
+            championImage === null
         ) {
-            championName = selectedChampionName
+            championImage = selectedchampionImage
             selectedChampion.set('')
         } else {
-            championName = ''
+            championImage = ''
         }
-        draft.set({ ...champions, [team + pickId]: championName })
+        draft.set({ ...champions, [team + pickId]: championImage })
     }
 </script>
 
@@ -64,14 +64,14 @@
     use:asDropZone={{ TypesToAccept: { 'text/plain': 'all' }, onDrop: onDrop }}
     on:click={onDropped}
 >
-    {#if championName === '' || championName === undefined || championName === null}
+    {#if championImage === '' || championImage === undefined || championImage === null}
         <div />
     {:else}
         <img
-            src={'/champions/' + championName + '.png'}
-            alt={championName}
+            src={'/champions/' + championImage}
+            alt={championImage}
             use:asDroppable={{
-                DataToOffer: { 'text/plain': championName },
+                DataToOffer: { 'text/plain': championImage },
                 Operations: 'move',
                 onDropped: onDropped,
             }}

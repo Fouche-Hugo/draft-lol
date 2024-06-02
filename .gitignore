@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# ddragon files
+dragontail/**
+dragontail-**.tgz

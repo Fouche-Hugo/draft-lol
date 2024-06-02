@@ -1,13 +1,13 @@
 <script lang="ts">
     import { asDroppable } from 'svelte-drag-and-drop-actions'
     import { draft, selectedChampion } from '../../ts/stores'
-    import { isChampionInDraft } from '../../ts/functions'
+    import { isChampionImageInDraft } from '../../ts/functions'
 
-    export let championName: string
+    export let championImage: string
 
     let disabled = false
     function updateState() {
-        disabled = isChampionInDraft(championName)
+        disabled = isChampionImageInDraft(championImage)
     }
 
     let champions
@@ -17,7 +17,7 @@
     })
 
     function updateSelectedChampion() {
-        selectedChampion.set(championName)
+        selectedChampion.set(championImage)
     }
 </script>
 
@@ -25,29 +25,29 @@
     <button
         {disabled}
         use:asDroppable={{
-            DataToOffer: { 'text/plain': championName },
+            DataToOffer: { 'text/plain': championImage },
             Operations: 'copy',
         }}
         on:click={updateSelectedChampion}
-        class:selected={championName === $selectedChampion}
+        class:selected={championImage === $selectedChampion}
     >
-        {#if championName === ''}
+        {#if championImage === ''}
             <div />
         {:else}
             <img
-                src={'/champions/' + championName + '.png'}
-                alt={championName}
+                src={'/champions/' + championImage}
+                alt={championImage}
             />
         {/if}
     </button>
 {:else}
     <button {disabled} on:click={updateSelectedChampion}>
-        {#if championName === ''}
+        {#if championImage === ''}
             <div />
         {:else}
             <img
-                src={'/champions/' + championName + '.png'}
-                alt={championName}
+                src={'/champions/' + championImage}
+                alt={championImage}
             />
         {/if}
     </button>

@@ -19,13 +19,13 @@
         </div>
         <div class="container-champions blue">
             <div class="container-trio-champions">
-                <ChampionBanned championName={champions.ban0} banId={0} />
-                <ChampionBanned championName={champions.ban1} banId={1} />
-                <ChampionBanned championName={champions.ban2} banId={2} />
+                <ChampionBanned championImage={champions.ban0} banId={0} />
+                <ChampionBanned championImage={champions.ban1} banId={1} />
+                <ChampionBanned championImage={champions.ban2} banId={2} />
             </div>
             <div class="container-duo-champions">
-                <ChampionBanned championName={champions.ban3} banId={3} />
-                <ChampionBanned championName={champions.ban4} banId={4} />
+                <ChampionBanned championImage={champions.ban3} banId={3} />
+                <ChampionBanned championImage={champions.ban4} banId={4} />
             </div>
         </div>
     </section>
@@ -36,13 +36,13 @@
         </div>
         <div class="container-champions red">
             <div class="container-duo-champions">
-                <ChampionBanned championName={champions.ban5} banId={5} />
-                <ChampionBanned championName={champions.ban6} banId={6} />
+                <ChampionBanned championImage={champions.ban5} banId={5} />
+                <ChampionBanned championImage={champions.ban6} banId={6} />
             </div>
             <div class="container-trio-champions">
-                <ChampionBanned championName={champions.ban7} banId={7} />
-                <ChampionBanned championName={champions.ban8} banId={8} />
-                <ChampionBanned championName={champions.ban9} banId={9} />
+                <ChampionBanned championImage={champions.ban7} banId={7} />
+                <ChampionBanned championImage={champions.ban8} banId={8} />
+                <ChampionBanned championImage={champions.ban9} banId={9} />
             </div>
         </div>
     </section>

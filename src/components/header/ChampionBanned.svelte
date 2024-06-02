@@ -5,7 +5,7 @@
         type DropOperation,
     } from 'svelte-drag-and-drop-actions'
     import { draft, selectedChampion } from '../../ts/stores'
-    import { isStringAChampion } from '../../ts/functions'
+    import { isStringAChampionImage } from '../../ts/functions'
 
     let champions
     draft.subscribe((value) => {
@@ -17,7 +17,7 @@
         selectedChampionName = value
     })
 
-    export let championName: string = ''
+    export let championImage: string = ''
     export let banId: number
 
     function onDrop(
@@ -28,34 +28,34 @@
         DroppableExtras: any,
         DropZoneExtras: any
     ): string {
-        let newChampionName = DataOffered['text/plain']
+        let newChampionImage = DataOffered['text/plain']
 
-        if (newChampionName === championName) {
+        if (newChampionImage === championImage) {
             return 'false'
         }
 
-        if (!isStringAChampion(newChampionName)) {
+        if (!isStringAChampionImage(newChampionImage)) {
             return 'false'
         }
 
-        championName = newChampionName
-        draft.set({ ...champions, ['ban' + banId]: championName })
+        championImage = newChampionImage
+        draft.set({ ...champions, ['ban' + banId]: championImage })
 
         return undefined
     }
 
     function onDropped() {
         if (
-            championName === '' ||
-            championName === undefined ||
-            championName === null
+            championImage === '' ||
+            championImage === undefined ||
+            championImage === null
         ) {
-            championName = selectedChampionName
+            championImage = selectedChampionName
             selectedChampion.set('')
         } else {
-            championName = ''
+            championImage = ''
         }
-        draft.set({ ...champions, ['ban' + banId]: championName })
+        draft.set({ ...champions, ['ban' + banId]: championImage })
     }
 </script>
 
@@ -63,14 +63,14 @@
     use:asDropZone={{ TypesToAccept: { 'text/plain': 'all' }, onDrop: onDrop }}
     on:click={onDropped}
 >
-    {#if championName === '' || championName === undefined || championName === null}
+    {#if championImage === '' || championImage === undefined || championImage === null}
         <div />
     {:else}
         <img
-            src={'/champions/' + championName + '.png'}
-            alt={championName}
+            src={'/champions/' + championImage}
+            alt={championImage}
             use:asDroppable={{
-                DataToOffer: { 'text/plain': championName },
+                DataToOffer: { 'text/plain': championImage },
                 Operations: 'move',
                 onDropped: onDropped,
             }}

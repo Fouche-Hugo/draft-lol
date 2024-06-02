@@ -3,6 +3,8 @@
     import champions from '../../data/champions.json'
 
     let inputText = ''
+
+    champions.sort((a, b) => a.name.localeCompare(b.name))
 </script>
 
 <section>
@@ -18,7 +20,7 @@
     <div class="container-champions">
         {#each champions as champion}
             {#if champion.name.toLowerCase().includes(inputText.toLowerCase())}
-                <ChampionDraft championName={champion.name} />
+                <ChampionDraft championImage={champion.image} />
             {/if}
         {/each}
     </div>

@@ -2,8 +2,7 @@
     import html2canvas from 'html2canvas'
     import { clearDraft, draft, editingMode } from '../../ts/stores'
     import { tick } from 'svelte'
-    import { encode, decode } from 'base2048'
-    import Msgpack from 'msgpack-lite'
+    import { encodeDraftLink } from '../../ts/functions'
 
     let champions
     draft.subscribe((value) => {
@@ -13,41 +12,11 @@
     function link() {
         const url = new URL(window.location.href)
 
-        // const params = [
-        //     { key: 'ban0', value: champions.ban0 },
-        //     { key: 'ban1', value: champions.ban1 },
-        //     { key: 'ban2', value: champions.ban2 },
-        //     { key: 'ban3', value: champions.ban3 },
-        //     { key: 'ban4', value: champions.ban4 },
-        //     { key: 'ban5', value: champions.ban5 },
-        //     { key: 'ban6', value: champions.ban6 },
-        //     { key: 'b1', value: champions.b1 },
-        //     { key: 'b2', value: champions.b2 },
-        //     { key: 'b3', value: champions.b3 },
-        //     { key: 'b4', value: champions.b4 },
-        //     { key: 'b5', value: champions.b5 },
-        //     { key: 'r1', value: champions.r1 },
-        //     { key: 'r2', value: champions.r2 },
-        //     { key: 'r3', value: champions.r3 },
-        //     { key: 'r4', value: champions.r4 },
-        //     { key: 'r5', value: champions.r5 },
-        // ]
-
-        console.log($draft)
-        let encodedValue = encode(Msgpack.encode($draft))
-        console.log(encodedValue)
-        let decodedValue = Msgpack.decode(decode(encodedValue))
-        console.log(decodedValue)
+        // let encodedValue = encode(Msgpack.encode($draft))
+        let encodedValue = encodeDraftLink(champions)
+        // let decodedValue = Msgpack.decode(decode(encodedValue))
 
         url.searchParams.set('draft', encodedValue)
-
-        // params.forEach((param) => {
-        //     if (param.value && param.value.trim() !== '') {
-        //         url.searchParams.set(param.key, param.value)
-        //     } else {
-        //         url.searchParams.delete(param.key)
-        //     }
-        // })
 
         navigator.clipboard.writeText(url.toString())
     }
