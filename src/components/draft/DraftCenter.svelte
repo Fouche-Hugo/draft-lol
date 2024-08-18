@@ -3,8 +3,6 @@
     import champions from '../../data/champions.json'
 
     let inputText = ''
-
-    champions.sort((a, b) => a.name.localeCompare(b.name))
 </script>
 
 <section>

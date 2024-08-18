@@ -4,7 +4,6 @@ import { encode, decode } from 'base2048'
 import Msgpack from 'msgpack-lite'
 
 export function isChampionImageInDraft(championImage: string): boolean {
-
     let champions
     draft.subscribe((value) => (champions = value))
 
@@ -27,38 +26,36 @@ export function isStringAChampionImage(championImage: string): boolean {
     return false
 }
 
-export function decodeDraftLink(searchParams: URLSearchParams): {[key: string]: string} {
+export function decodeDraftLink(searchParams: URLSearchParams): {
+    [key: string]: string
+} {
     let draftInfos = Msgpack.decode(decode(searchParams.get('draft')))
     let draft = {}
 
-    console.log(draftInfos)
-
-    for(let i = 0; i < 5; i++) {
+    for (let i = 0; i < 5; i++) {
         let index = draftInfos[i]
         if (index >= 0) {
-            console.log(index)
-            draft[`b${i+1}`] = championsData[draftInfos[i]].image
+            draft[`b${i + 1}`] = championsData[draftInfos[i]].image
         } else {
-            draft[`b${i+1}`] = ''
+            draft[`b${i + 1}`] = ''
         }
     }
 
-    for(let i = 5; i < 10; i++) {
+    for (let i = 5; i < 10; i++) {
         let index = draftInfos[i]
         if (index >= 0) {
-            draft[`r${i-5+1}`] = championsData[draftInfos[i]].image
+            draft[`r${i - 5 + 1}`] = championsData[draftInfos[i]].image
         } else {
-            draft[`r${i-5+1}`] = ''
+            draft[`r${i - 5 + 1}`] = ''
         }
     }
 
-    for(let i = 10; i < 20; i++) {
+    for (let i = 10; i < 20; i++) {
         let index = draftInfos[i]
         if (index >= 0) {
-            draft[`ban${i-10}`] = championsData[draftInfos[i]].image
-            console.log(championsData[draftInfos[i]].image)
+            draft[`ban${i - 10}`] = championsData[draftInfos[i]].image
         } else {
-            draft[`ban${i-10}`] = ''
+            draft[`ban${i - 10}`] = ''
         }
     }
 
@@ -80,32 +77,54 @@ export function decodeDraftLink(searchParams: URLSearchParams): {[key: string]: 
     return draft
 }
 
-export function encodeDraftLink(draftInfos: {[key: string]: string}): string {
+export function encodeDraftLink(draftInfos: { [key: string]: string }): string {
     let draft = []
 
-    for(let i = 1; i <= 5; i++) {
-        if (draftInfos[`b${i}`] === '' || draftInfos[`b${i}`] === undefined || draftInfos[`b${i}`] === null) {
+    for (let i = 1; i <= 5; i++) {
+        if (
+            draftInfos[`b${i}`] === '' ||
+            draftInfos[`b${i}`] === undefined ||
+            draftInfos[`b${i}`] === null
+        ) {
             draft.push(-1)
         } else {
-            draft.push(championsData.findIndex((champion) => champion.image === draftInfos[`b${i}`]))
+            draft.push(
+                championsData.findIndex(
+                    (champion) => champion.image === draftInfos[`b${i}`]
+                )
+            )
         }
     }
 
-    for(let i = 1; i <= 5; i++) {
-        if (draftInfos[`r${i}`] === '' || draftInfos[`r${i}`] === undefined || draftInfos[`r${i}`] === null) {
+    for (let i = 1; i <= 5; i++) {
+        if (
+            draftInfos[`r${i}`] === '' ||
+            draftInfos[`r${i}`] === undefined ||
+            draftInfos[`r${i}`] === null
+        ) {
             draft.push(-1)
         } else {
-            draft.push(championsData.findIndex((champion) => champion.image === draftInfos[`r${i}`]))
+            draft.push(
+                championsData.findIndex(
+                    (champion) => champion.image === draftInfos[`r${i}`]
+                )
+            )
         }
     }
 
-    for(let i = 0; i < 10; i++) {
-        if (draftInfos[`ban${i}`] === '' || draftInfos[`ban${i}`] === undefined || draftInfos[`ban${i}`] === null) {
+    for (let i = 0; i < 10; i++) {
+        if (
+            draftInfos[`ban${i}`] === '' ||
+            draftInfos[`ban${i}`] === undefined ||
+            draftInfos[`ban${i}`] === null
+        ) {
             draft.push(-1)
         } else {
-            console.log(draftInfos[`ban${i}`])
-            draft.push(championsData.findIndex((champion) => champion.image === draftInfos[`ban${i}`]))
-            console.log(draft[9+i+1])
+            draft.push(
+                championsData.findIndex(
+                    (champion) => champion.image === draftInfos[`ban${i}`]
+                )
+            )
         }
     }
 
@@ -123,8 +142,6 @@ export function encodeDraftLink(draftInfos: {[key: string]: string}): string {
     draft.push(draftInfos['Red 3'])
     draft.push(draftInfos['Red 4'])
     draft.push(draftInfos['Red 5'])
-
-    console.log(draft)
 
     return encode(Msgpack.encode(draft))
 }

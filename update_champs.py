@@ -72,10 +72,13 @@ def update_champions_json(version):
         for champion in champions.values():
             champions_json.append({"name": champion["name"], "image": champion["image"]["full"]})
 
-        dest_folder = os.path.join(current_directory, "src/data/champions_test.json")
+        # Sort champions by name
+        champions_json.sort(key=lambda champion: champion["name"])
+
+        dest_folder = os.path.join(current_directory, "src/data/champions.json")
         with open(dest_folder, "w") as f:
             json.dump(champions_json, f)
-        print(f"Updated champions_test file to src/data/champions_test file")
+        print(f"Updated champions_test file to src/data/champions file")
 
 def main():
     latest_version = get_latest_ddragon_version()
