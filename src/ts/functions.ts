@@ -31,22 +31,24 @@ export function decodeDraftLink(searchParams: URLSearchParams): {[key: string]: 
     let draftInfos = Msgpack.decode(decode(searchParams.get('draft')))
     let draft = {}
 
+    console.log(draftInfos)
+
     for(let i = 0; i < 5; i++) {
         let index = draftInfos[i]
         if (index >= 0) {
             console.log(index)
-            draft[`b${i}`] = championsData[draftInfos[i]].image
+            draft[`b${i+1}`] = championsData[draftInfos[i]].image
         } else {
-            draft[`b${i}`] = ''
+            draft[`b${i+1}`] = ''
         }
     }
 
     for(let i = 5; i < 10; i++) {
         let index = draftInfos[i]
         if (index >= 0) {
-            draft[`r${i-5}`] = championsData[draftInfos[i]].image
+            draft[`r${i-5+1}`] = championsData[draftInfos[i]].image
         } else {
-            draft[`r${i-5}`] = ''
+            draft[`r${i-5+1}`] = ''
         }
     }
 
@@ -54,6 +56,7 @@ export function decodeDraftLink(searchParams: URLSearchParams): {[key: string]: 
         let index = draftInfos[i]
         if (index >= 0) {
             draft[`ban${i-10}`] = championsData[draftInfos[i]].image
+            console.log(championsData[draftInfos[i]].image)
         } else {
             draft[`ban${i-10}`] = ''
         }
@@ -80,7 +83,7 @@ export function decodeDraftLink(searchParams: URLSearchParams): {[key: string]: 
 export function encodeDraftLink(draftInfos: {[key: string]: string}): string {
     let draft = []
 
-    for(let i = 0; i < 5; i++) {
+    for(let i = 1; i <= 5; i++) {
         if (draftInfos[`b${i}`] === '' || draftInfos[`b${i}`] === undefined || draftInfos[`b${i}`] === null) {
             draft.push(-1)
         } else {
@@ -88,7 +91,7 @@ export function encodeDraftLink(draftInfos: {[key: string]: string}): string {
         }
     }
 
-    for(let i = 0; i < 5; i++) {
+    for(let i = 1; i <= 5; i++) {
         if (draftInfos[`r${i}`] === '' || draftInfos[`r${i}`] === undefined || draftInfos[`r${i}`] === null) {
             draft.push(-1)
         } else {
@@ -100,7 +103,9 @@ export function encodeDraftLink(draftInfos: {[key: string]: string}): string {
         if (draftInfos[`ban${i}`] === '' || draftInfos[`ban${i}`] === undefined || draftInfos[`ban${i}`] === null) {
             draft.push(-1)
         } else {
+            console.log(draftInfos[`ban${i}`])
             draft.push(championsData.findIndex((champion) => champion.image === draftInfos[`ban${i}`]))
+            console.log(draft[9+i+1])
         }
     }
 
@@ -118,6 +123,8 @@ export function encodeDraftLink(draftInfos: {[key: string]: string}): string {
     draft.push(draftInfos['Red 3'])
     draft.push(draftInfos['Red 4'])
     draft.push(draftInfos['Red 5'])
+
+    console.log(draft)
 
     return encode(Msgpack.encode(draft))
 }
