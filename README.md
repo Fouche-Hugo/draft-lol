@@ -32,9 +32,9 @@ npm run dev
 
 #### Update the file champions.json
 When a new champion is released or an existing one is reworked, we need to update the file `src/data/champions.json` and the images in `public/champions`.
-To do so, make sure `python` and the `requests` package are installed
+To do so, make sure `python` and the required packages are installed
 ```bash
-pip install requests
+pip install -r requirements.txt
 ```
 
 Then, you can run the `update_champs.py` script which will :
